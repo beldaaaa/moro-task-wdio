@@ -6,7 +6,6 @@ class Page {
 
     async openBrowser() {
         browser.url('/');//opens google via baseUrl in wdio.conf.js
-        browser.maximizeWindow();
     }
 
     get getSearchBox() {

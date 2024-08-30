@@ -7,6 +7,7 @@ export const config: Options.Testrunner = {
       browserName: 'chrome',
       maxInstances: 1,
       'goog:chromeOptions': {
+        args: ['--headless', '--disable-gpu', '--window-size=1920,1080'],
         prefs: {
           'profile.default_content_setting_values.cookies': 2, //block all cookies
         },

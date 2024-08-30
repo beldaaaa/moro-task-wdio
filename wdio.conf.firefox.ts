@@ -8,6 +8,7 @@ export const config: Options.Testrunner = {
             browserName: 'firefox',
             maxInstances: 1,
             'moz:firefoxOptions': {
+                args: ['--headless', '--disable-gpu', '--window-size=1920,1080'],
                 prefs: {
                     'network.cookie.cookieBehavior': 2, // Block all cookies
                 },
