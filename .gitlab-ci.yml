@@ -1,0 +1,21 @@
+image: node:22.6
+
+stages:
+  - test
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
+
+test_chrome:
+  stage: test
+  script:
+    - npx wdio run wdio.config.ts
+
+test_firefox:
+  stage: test
+  script:
+    - npx wdio run wdio.config.firefox.ts
