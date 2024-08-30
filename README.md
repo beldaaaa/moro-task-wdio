@@ -6,9 +6,9 @@ Simple test project in TypeScript with WDIO and Mocha to demonstrate searching a
 
 ## How to run tests
 
-npm run chrome
+"npm run chrome" to start test in Chrome browser
 
-npm run firefox
+"npm run firefox" to start test in Firefox browser
 
 ## Development
 
