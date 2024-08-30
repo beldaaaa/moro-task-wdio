@@ -3,15 +3,18 @@ import MoroPage from './pages/moro.page';
 
 describe('Google Search', () => {
 
-    let searchKeyword: string = 'MoroSystems';
+    const searchKeyword: string = 'Moro Systems';
+    const tabToSelect: string = 'Kariéra';
 
     before(() => {
-        Page.openBrowser(); // Open Google
+        Page.openBrowser(); 
+        Page.setKeyword = searchKeyword;
+        MoroPage.setTabToSelect = tabToSelect;
     });
 
     it('should search for MoroSystems and get to its Career section', async () => {
 
-        await Page.searchForKeyword(searchKeyword);
+        await Page.searchForKeyword();
         await Page.findResult();
         await MoroPage.goToCareer();
     });

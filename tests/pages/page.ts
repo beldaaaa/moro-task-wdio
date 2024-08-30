@@ -1,3 +1,5 @@
+import { pause } from "webdriverio/build/commands/browser";
+
 class Page {
 
     private keyword: string;
@@ -6,12 +8,22 @@ class Page {
         browser.url('/');//opens google via baseUrl in wdio.conf.js
         browser.maximizeWindow();
     }
-   
-    async searchForKeyword(keyword: string) {
+
+    get getSearchBox() {
+        return $('[name="q"]');
+    }
+    get getSearchButton() {
+        return $('[name="btnK"]');
+    }
+    set setKeyword(keyword: string) {
         this.keyword = keyword;
-        const searchBox = $('[name="q"]');
+    }
+
+    async searchForKeyword() {
+        const searchBox = this.getSearchBox;
         await searchBox.setValue(this.keyword);
-        const searchButton = $('[name="btnK"]');
+        const searchButton = this.getSearchButton;
+        await expect(searchButton).toBeDisplayed()
         await searchButton.click();
     }
 
@@ -19,8 +31,8 @@ class Page {
         return inputString.toLowerCase().replace(/\s/g, '');
     }
 
-    private async verifyUrl(){
-        expect(browser).toHaveUrl(
+    private async verifyUrl() {
+        await expect(browser).toHaveUrl(
             expect.stringContaining(await this.formatInput(this.keyword)));
     }
 
